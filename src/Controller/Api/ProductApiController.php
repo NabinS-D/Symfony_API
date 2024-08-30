@@ -24,8 +24,7 @@ class ProductApiController extends AbstractController
     {
         $projects = $projectRepository->findAll();
         $data = $serializer->normalize($projects, null, ['groups' => 'project:read']);
-
-        return $this->successResponseWithData($data);
+        return $this->successResponseWithData('Projects retrieved successfully', $data);
     }
 
     #[Route('/create', methods: ['POST'])]
@@ -73,8 +72,7 @@ class ProductApiController extends AbstractController
             $project->setUpdatedAt(new \DateTimeImmutable());
 
             $em->flush();
-            $data = $this->serializer->normalize($project, null, ['groups' => 'project:read']);
-            return $this->successResponseWithData('Project successfully updated!',$data);
+            return $this->successResponse('Project successfully updated!');
         }
 
         // Handle form validation errors
@@ -91,7 +89,7 @@ class ProductApiController extends AbstractController
         }
         $data = $serializer->normalize($project, null, ['groups' => 'project:read']);
 
-        return $this->successResponseWithData($data);
+        return $this->successResponseWithData('Project retrieved successfully', $data);
     }
 
     #[Route('/delete/{id}', methods: ['DELETE'])]

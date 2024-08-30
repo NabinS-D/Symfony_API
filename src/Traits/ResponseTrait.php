@@ -16,7 +16,7 @@ trait ResponseTrait
     }
 
     
-    protected function successResponseWithData(string $message = null, $data = null,  int $status = JsonResponse::HTTP_OK): JsonResponse
+    protected function successResponseWithData(string $message = null, array $data = null,  int $status = JsonResponse::HTTP_OK): JsonResponse
     {
         return $this->json([
             'status' => 'true',
