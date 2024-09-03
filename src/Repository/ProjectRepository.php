@@ -40,4 +40,15 @@ class ProjectRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    public function findAllWithTasks(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.tasks', 't')
+            ->addSelect('t')
+            ->where('p.deletedAt IS NULL') // Add the soft-delete condition
+            ->getQuery()
+            ->getResult();
+    }
+    
+    
 }
