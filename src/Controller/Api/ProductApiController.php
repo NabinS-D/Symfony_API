@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 
-#[Route('/api/products', name: 'api_products_')]
+#[Route('/api/projects', name: 'api_products_')]
 class ProductApiController extends AbstractController
 {
     use ResponseTrait;
